@@ -1,4 +1,4 @@
-***cpp
+
 #include<iostream>
 using namespace std;
 class GameCharacter
@@ -99,4 +99,4 @@ int main()
     }  
     return 0;
 }
-***
+
