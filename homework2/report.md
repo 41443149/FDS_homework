@@ -102,8 +102,12 @@ Polynomial Polynomial::Add(const Polynomial& b) {
 			aPos++;
 		}
 	}
-	for (; aPos < terms; aPos++) c.newTerm(termArray[aPos].coef, termArray[aPos].exp);
-	for (; bPos < b.terms; bPos++) c.newTerm(b.termArray[bPos].coef, termArray[bPos].exp);
+	for (; aPos < terms; aPos++) {
+		c.newTerm(termArray[aPos].coef, termArray[aPos].exp);
+	}
+	for (; bPos < b.terms; bPos++) {
+		c.newTerm(b.termArray[bPos].coef, b.termArray[bPos].exp);
+	}
 	return c;
 }
 
@@ -215,4 +219,4 @@ int main() {
 | 測試三   |   2 4 3 -5 0      | 2 -4 3 5 0  |     0        | -16x^6 + 40x^3 - 25        |
 
 ## 申論及開發報告
-
+因為一開始記憶體空間給固定值，如果多項式次方比記憶體大時，程式就無法運作所以要用動態記憶體配置靈活調整所需要的記憶體空間，然後在把放在就記憶體的資料copy到新記憶體位置。
