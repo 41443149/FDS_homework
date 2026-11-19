@@ -47,22 +47,27 @@ Chain<T>::~Chain() {
 template<class T>
 inline T& Chain<T>::Top() const {
 	if (IsEmpty())throw "Stack is empty";
-	return stack[top];
+	return first->data;
 }
 
 template<class T>
 void Chain<T>::Push(const T& item) {
-	
+	ChainNode<T>* newnode = new ChainNode<T>();
+	this->data = item;
+	this->link = first;
+	first = newnode;
 }
 
 template<class T>
 void Chain<T>::pop() {
-	if (IsEmpty())throw "Stack is empty. Cannot delete.";
-	Chain[top--].~T();
+	ChainNode<T>* newnode = new ChainNode<T>();
+	newnode = first;
+	first = first->link;
+	delete newnode;
 }
 
 int main() {
-	Chain o;
+	Chain<int> a();
 	cout << "-- - Stack目錄---" << endl;
 	cout << "1.Push" << endl;
 	cout << "2.Pop" << endl;
@@ -78,7 +83,9 @@ int main() {
 		switch (n)
 		{
 		case 1: {
-
+			int item;
+			cin >> item;
+			a.Push(item);
 			break;
 		}
 		case 2: {
